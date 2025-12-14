@@ -1,0 +1,15 @@
+"_id","name","address","phone","email","gstNo","createdAt","updatedAt","__v"
+"693bbccd685992249d2648ce","Test Company 3","123 Test Street","123456789","test@example.com","GST1234567890","2025-12-12T06:57:17.769Z","2025-12-12T17:58:19.941Z","0"
+"693bbdfb1978a2867c22f441","Fritado web Solutions","Bannerghatta Road, Bannerghatta Road, Bangalore
+Bannerghatta Road, Bangalore","09986028369","support@fritado.com","1234545654","2025-12-12T07:02:19.492Z","2025-12-12T17:40:34.572Z","0"
+"693c122f1dc8b70e577589fc","Test company","Bannerghatta Road, Bannerghatta Road, Bangalore
+Bannerghatta Road, Bangalore","9986028787","support@fritado.com","ccscacscscsdc","2025-12-12T13:01:35.806Z","2025-12-12T17:40:34.572Z","0"
+"693c57cf0a961c2e934174f5","Test acskn",,"9876765676","sahd@gmail.com",,"2025-12-12T17:58:39.898Z","2025-12-12T17:58:39.898Z","0"
+"693c5ba22f8a76cb7ca5b2c7","csdcac caskm",,"9878876787","acnajs@gmail.com",,"2025-12-12T18:14:58.929Z","2025-12-12T18:14:58.929Z","0"
+"693c5bb52f8a76cb7ca5b2cd","Test 5",,"77776767676","test5@gmail.com",,"2025-12-12T18:15:17.414Z","2025-12-12T18:15:17.414Z","0"
+"693c5bc42f8a76cb7ca5b2d3","Test 6",,"5656565656","test6@gmail.com",,"2025-12-12T18:15:32.966Z","2025-12-12T18:15:32.966Z","0"
+"693c5bd62f8a76cb7ca5b2d9","Test 7",,"4565656767","test7@gmail.com",,"2025-12-12T18:15:50.736Z","2025-12-12T18:15:50.736Z","0"
+"693c5bea2f8a76cb7ca5b2df","Test 8 ",,"9876787676","test8@gmail.com",,"2025-12-12T18:16:10.994Z","2025-12-12T18:16:10.994Z","0"
+"693c5bfb2f8a76cb7ca5b2e5","Test 9",,"5654567656","test9@gmail.com",,"2025-12-12T18:16:27.038Z","2025-12-12T18:16:27.038Z","0"
+"693c5c0f2f8a76cb7ca5b2eb","Test10",,"8765676545","test10@gmail.com",,"2025-12-12T18:16:47.697Z","2025-12-12T18:16:47.697Z","0"
+"693e2cc9ff25b9eee6a5e5bd","Another Company Name",,"1234567890","test@example.com",,"2025-12-14T03:19:37.173Z","2025-12-14T03:47:36.736Z","0"

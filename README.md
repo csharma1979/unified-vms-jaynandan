@@ -240,6 +240,7 @@ PM2 is a production process manager for Node.js applications with a built-in loa
    MONGO_URI=mongodb://localhost:27017/service_business_management
    JWT_SECRET=your_jwt_secret_key
    NODE_ENV=production
+   
    ```
 
 4. Start the backend application with PM2:

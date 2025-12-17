@@ -29,42 +29,10 @@ const InvoiceManagement = () => {
 
   const fetchInvoices = async () => {
     try {
-      // Simulate API call
+      // TODO: Implement real API call
       setTimeout(() => {
-        const mockInvoices = [
-          {
-            _id: 'inv1',
-            invoiceNo: 'INV-230515-001',
-            companyId: { name: 'ABC Corporation' },
-            locationId: { name: 'Mumbai Branch' },
-            amount: 50000,
-            gst: 9000,
-            description: 'Software development services',
-            status: 'sent',
-            createdAt: '2023-05-15T10:30:00Z',
-            history: [
-              { status: 'draft', timestamp: '2023-05-14T09:00:00Z' },
-              { status: 'sent', timestamp: '2023-05-15T10:30:00Z' }
-            ]
-          },
-          {
-            _id: 'inv2',
-            invoiceNo: 'INV-230516-002',
-            companyId: { name: 'XYZ Enterprises' },
-            locationId: { name: 'Delhi Office' },
-            amount: 75000,
-            gst: 13500,
-            description: 'Consulting services',
-            status: 'approved',
-            createdAt: '2023-05-16T14:45:00Z',
-            history: [
-              { status: 'draft', timestamp: '2023-05-15T11:00:00Z' },
-              { status: 'sent', timestamp: '2023-05-16T09:15:00Z' },
-              { status: 'approved', timestamp: '2023-05-16T14:45:00Z' }
-            ]
-          }
-        ];
-        setInvoices(mockInvoices);
+        
+        // TODO: Replace with real API call;
         setLoading(false);
       }, 1000);
     } catch (error) {
@@ -75,13 +43,10 @@ const InvoiceManagement = () => {
 
   const fetchCompanies = async () => {
     try {
-      // Simulate API call
+      // TODO: Implement real API call
       setTimeout(() => {
-        const mockCompanies = [
-          { _id: 'comp1', name: 'ABC Corporation' },
-          { _id: 'comp2', name: 'XYZ Enterprises' }
-        ];
-        setCompanies(mockCompanies);
+        
+        // TODO: Replace with real API call;
       }, 500);
     } catch (error) {
       console.error('Error fetching companies:', error);
@@ -90,7 +55,7 @@ const InvoiceManagement = () => {
 
   const fetchLocations = async (companyId) => {
     try {
-      // Simulate API call
+      // TODO: Implement real API call
       setTimeout(() => {
         const mockLocations = {
           'comp1': [
@@ -141,7 +106,7 @@ const InvoiceManagement = () => {
   const handleSubmitInvoice = async (e) => {
     e.preventDefault();
     try {
-      // Simulate API call
+      // TODO: Implement real API call
       console.log('Creating invoice:', formData);
       alert('Invoice created successfully!');
       setShowInvoiceForm(false);

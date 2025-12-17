@@ -14,42 +14,10 @@ const AgentInvoices = () => {
 
   const fetchInvoices = async () => {
     try {
-      // Simulate API call
+      // TODO: Implement real API call
       setTimeout(() => {
-        const mockInvoices = [
-          {
-            _id: 'inv1',
-            invoiceNo: 'INV-230515-001',
-            companyId: { name: 'ABC Corporation' },
-            locationId: { name: 'Mumbai Branch' },
-            amount: 50000,
-            gst: 9000,
-            description: 'Software development services',
-            status: 'sent',
-            createdAt: '2023-05-15T10:30:00Z',
-            history: [
-              { status: 'draft', timestamp: '2023-05-14T09:00:00Z' },
-              { status: 'sent', timestamp: '2023-05-15T10:30:00Z' }
-            ]
-          },
-          {
-            _id: 'inv2',
-            invoiceNo: 'INV-230516-002',
-            companyId: { name: 'XYZ Enterprises' },
-            locationId: { name: 'Delhi Office' },
-            amount: 75000,
-            gst: 13500,
-            description: 'Consulting services',
-            status: 'approved',
-            createdAt: '2023-05-16T14:45:00Z',
-            history: [
-              { status: 'draft', timestamp: '2023-05-15T11:00:00Z' },
-              { status: 'sent', timestamp: '2023-05-16T09:15:00Z' },
-              { status: 'approved', timestamp: '2023-05-16T14:45:00Z' }
-            ]
-          }
-        ];
-        setInvoices(mockInvoices);
+        
+        // TODO: Replace with real API call;
         setLoading(false);
       }, 1000);
     } catch (error) {
@@ -77,7 +45,7 @@ const AgentInvoices = () => {
 
   const submitStatusUpdate = async () => {
     try {
-      // Simulate API call
+      // TODO: Implement real API call
       console.log('Updating invoice status:', { invoiceId: selectedInvoice._id, status: newStatus });
       alert('Invoice status updated successfully!');
       setShowStatusModal(false);

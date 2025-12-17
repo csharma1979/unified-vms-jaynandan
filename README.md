@@ -68,7 +68,7 @@ A web-based application for managing service businesses with Admin and Company A
 
 3. Create a `.env` file with the following variables:
    ```
-   PORT=30010
+   PORT=4000
    MONGO_URI=mongodb://localhost:27017/service_business_management
    JWT_SECRET=your_jwt_secret_key
    ```
@@ -196,6 +196,156 @@ To build the frontend for production:
 cd frontend
 npm run build
 ```
+
+## Production Deployment
+
+Before moving to production, follow the detailed [Production Deployment Guide](PRODUCTION_DEPLOYMENT_GUIDE.md) to ensure all test data is removed and the application is properly configured for production use.
+
+Key steps include:
+- Running database cleanup scripts to remove test payment data
+- Verifying frontend components use real API calls
+- Checking environment configuration
+- Performing final validation
+
+Always backup your database before running cleanup scripts.
+
+## Deploying with PM2
+
+PM2 is a production process manager for Node.js applications with a built-in load balancer. It allows you to keep applications alive forever, to reload them without downtime and to facilitate common system admin tasks.
+
+### Prerequisites
+
+1. Install PM2 globally:
+   ```bash
+   npm install -g pm2
+   ```
+
+2. Ensure you have MongoDB running either locally or have a MongoDB Atlas connection string.
+
+### Backend Deployment
+
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file with the following variables:
+   ```
+   PORT=4000
+   MONGO_URI=mongodb://localhost:27017/service_business_management
+   JWT_SECRET=your_jwt_secret_key
+   NODE_ENV=production
+   ```
+
+4. Start the backend application with PM2:
+   ```bash
+   pm2 start server.js --name "vms-backend" --watch
+   ```
+
+   Alternatively, you can use the provided ecosystem.config.js file to start both applications:
+   ```bash
+   pm2 start ecosystem.config.js
+   ```
+
+5. Save the PM2 process list and corresponding environments:
+   ```bash
+   pm2 save
+   ```
+
+6. Setup PM2 to start on system boot:
+   ```bash
+   pm2 startup
+   ```
+   Follow the instructions provided by the command to complete the setup.
+
+### Frontend Deployment
+
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Build the frontend for production:
+   ```bash
+   npm run build
+   ```
+
+4. Serve the built files using a static server managed by PM2. First, install serve globally:
+   ```bash
+   npm install -g serve
+   ```
+
+5. Start the frontend application with PM2:
+   ```bash
+   pm2 start "serve -s dist -l 30009" --name "vms-frontend"
+   ```
+
+   Alternatively, you can use the provided ecosystem.config.js file to start both applications:
+   ```bash
+   pm2 start ecosystem.config.js
+   ```
+
+6. Save the PM2 process list:
+   ```bash
+   pm2 save
+   ```
+
+### Managing Applications with PM2
+
+- Check application status:
+  ```bash
+  pm2 status
+  ```
+
+- View application logs:
+  ```bash
+  pm2 logs
+  ```
+
+- Restart an application:
+  ```bash
+  pm2 restart vms-backend
+  pm2 restart vms-frontend
+  ```
+
+  Or restart all applications:
+  ```bash
+  pm2 restart ecosystem.config.js
+  ```
+
+- Stop an application:
+  ```bash
+  pm2 stop vms-backend
+  pm2 stop vms-frontend
+  ```
+
+  Or stop all applications:
+  ```bash
+  pm2 stop ecosystem.config.js
+  ```
+
+- Delete an application from PM2:
+  ```bash
+  pm2 delete vms-backend
+  pm2 delete vms-frontend
+  ```
+
+  Or delete all applications:
+  ```bash
+  pm2 delete ecosystem.config.js
+  ```
+
+> Note: The ecosystem.config.js file provides a convenient way to manage both applications together. You can start, stop, restart, and monitor both the backend and frontend applications with a single command.
 
 ## License
 

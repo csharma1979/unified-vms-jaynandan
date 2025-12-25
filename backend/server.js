@@ -8,8 +8,22 @@ const app = express();
 
 const PORT = process.env.PORT || 4000;
 
-// Middleware
-app.use(cors());
+// CORS configuration
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',      // Development frontend
+    'http://localhost:30000',     // Development frontend port
+    'http://209.145.53.86:30000', // Production frontend
+    'http://209.145.53.86',       // Production server root
+    'https://209.145.53.86:30000', // Production frontend with HTTPS
+    'https://209.145.53.86'       // Production server root with HTTPS
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

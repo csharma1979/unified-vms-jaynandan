@@ -288,7 +288,7 @@ PM2 is a production process manager for Node.js applications with a built-in loa
 
 5. Start the frontend application with PM2:
    ```bash
-   pm2 start "serve -s dist -l 30009" --name "vms-frontend"
+   pm2 start "serve -s dist -l 30000" --name "vms-frontend"
    ```
 
    Alternatively, you can use the provided ecosystem.config.js file to start both applications:
@@ -301,7 +301,33 @@ PM2 is a production process manager for Node.js applications with a built-in loa
    pm2 save
    ```
 
-### Managing Applications with PM2
+## Production Environment Configuration
+
+### Environment Variables
+
+For production deployment, ensure the following environment variables are set:
+
+#### Backend (.env file)
+```
+PORT=4000
+MONGO_URI=mongodb://localhost:27017/service_business_management
+JWT_SECRET=your_secure_jwt_secret_key
+NODE_ENV=production
+```
+
+#### Frontend
+The frontend is configured to automatically use the production backend URL when built for production. The API calls will be directed to your production server. You can customize the backend URL by setting the `REACT_APP_BACKEND_URL` environment variable:
+
+```
+REACT_APP_BACKEND_URL=http://209.145.53.86:4000
+```
+
+If not set, it defaults to `http://209.145.53.86:4000`. The API calls will be directed to `{REACT_APP_BACKEND_URL}/api`.
+
+### API URL Configuration
+In production, the frontend automatically configures the API base URL to point to the backend server. This ensures that all API requests are properly routed to the backend server instead of being handled by the frontend server.
+
+## Managing Applications with PM2
 
 - Check application status:
   ```bash
@@ -318,7 +344,7 @@ PM2 is a production process manager for Node.js applications with a built-in loa
   pm2 restart vms-backend
   pm2 restart vms-frontend
   ```
-
+  
   Or restart all applications:
   ```bash
   pm2 restart ecosystem.config.js
@@ -329,7 +355,7 @@ PM2 is a production process manager for Node.js applications with a built-in loa
   pm2 stop vms-backend
   pm2 stop vms-frontend
   ```
-
+  
   Or stop all applications:
   ```bash
   pm2 stop ecosystem.config.js
@@ -340,13 +366,71 @@ PM2 is a production process manager for Node.js applications with a built-in loa
   pm2 delete vms-backend
   pm2 delete vms-frontend
   ```
-
+  
   Or delete all applications:
   ```bash
   pm2 delete ecosystem.config.js
   ```
 
+- Save current PM2 configuration:
+  ```bash
+  pm2 save
+  ```
+
+- Setup PM2 to start on system boot:
+  ```bash
+  pm2 startup
+  ```
+
+- Monitor all processes:
+  ```bash
+  pm2 monit
+  ```
+
 > Note: The ecosystem.config.js file provides a convenient way to manage both applications together. You can start, stop, restart, and monitor both the backend and frontend applications with a single command.
+
+## Common Commands Section
+
+### PM2 Management
+```bash
+# Start applications using ecosystem file
+pm2 start ecosystem.config.js
+
+# Stop applications
+pm2 stop ecosystem.config.js
+
+# Restart applications
+pm2 restart ecosystem.config.js
+
+# View logs
+pm2 logs
+
+# View application status
+pm2 status
+
+# Save current processes
+pm2 save
+
+# Setup auto-start on system boot
+pm2 startup
+
+# Monitor applications
+pm2 monit
+```
+
+### Server Reboot Persistence
+After setting up PM2 startup, your applications will automatically start when the server reboots. To restore the saved processes after a reboot:
+```bash
+pm2 resurrect
+```
+
+## Troubleshooting
+
+If you encounter login issues in production:
+1. Verify that the backend server is running on port 4000
+2. Check that the frontend is built and served correctly on port 30000
+3. Ensure CORS settings allow requests from your frontend domain
+4. Verify that environment variables are correctly set for production
 
 ## License
 
